@@ -1,8 +1,9 @@
 from django.db import models
 from django.utils.translation import ugettext as _
+from common import models as common_models
 
 
-class Project(models.Model):
+class Project(common_models.TimestampedModel):
     name = models.CharField(_('Name'), max_length=254)
 
     class Meta:
@@ -13,7 +14,7 @@ class Project(models.Model):
         return self.name
 
 
-class Stage(models.Model):
+class Stage(common_models.TimestampedModel):
     project = models.ForeignKey(Project, verbose_name=_('Project'))
     name = models.CharField(_('Name'), max_length=254)
 
@@ -25,7 +26,7 @@ class Stage(models.Model):
         return self.name
 
 
-class Server(models.Model):
+class Server(common_models.TimestampedModel):
     project = models.ForeignKey(Project, verbose_name=_('Project'))
     stage = models.ForeignKey(Stage, verbose_name=_('Stage'))
     name = models.CharField(_('Name'), max_length=254)

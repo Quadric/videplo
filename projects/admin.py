@@ -22,4 +22,19 @@ class StageAdmin(admin.ModelAdmin):
 
 @admin.register(models.Server)
 class ServerAdmin(admin.ModelAdmin):
-    pass
+
+    list_display = ('name', 'address', 'ping')
+
+    def ping(self, value):
+        """
+        Returns True if host responds to a ping request
+        """
+        import os, platform
+
+        # Ping parameters as function of OS
+        ping_str = "-n 1" if  platform.system().lower()=="windows" else "-c 1"
+
+        # Ping
+        return os.system("ping " + ping_str + " " + value.address) == 0
+    ping.short_description = 'Online'
+    ping.boolean = True

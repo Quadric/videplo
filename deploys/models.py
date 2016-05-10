@@ -1,9 +1,10 @@
 from django.db import models
 from django.utils.translation import ugettext as _
 from projects import models as projects_models
+from common import models as common_models
 
 
-class Deploy(models.Model):
+class Deploy(common_models.TimestampedModel):
 
     STATUS_IDLE = 1
     STATUS_PROCESSING = 2
