@@ -970,6 +970,10 @@ table#change-history tbody th {
 
 
 
+body {
+    font-family: 'Lato', sans-serif;
+}
+
 .dropdown-menu li {
     list-style: none;
 }
