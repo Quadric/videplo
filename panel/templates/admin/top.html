@@ -1,0 +1,25 @@
+{% load i18n admin_static %}
+{% if all_apps_list %}
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <ul class="nav navbar-nav">
+            {% for app in all_apps_list %}
+                {% if app.models %}
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="{{ app.app_url }}" class="section" title="{% blocktrans with name=app.name %}Models in the {{ name }} application{% endblocktrans %}">{{ app.name }}
+                        <span class="caret"></a>
+                        <ul class="dropdown-menu">
+                            {% for model in app.models %}
+                                <li><a href="{{ model.admin_url }}">{{ model.name }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+
+                {% else %}
+                    <li class="dropdown"><a href="{{ app.app_url }}" class="section" title="{% blocktrans with name=app.name %}Models in the {{ name }} application{% endblocktrans %}">{{ app.name }}</a></li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+</nav>
+{% endif %}
