@@ -1,5 +1,7 @@
 from django.contrib import admin
 from . import models
+from guardian.admin import GuardedModelAdmin
+
 
 
 class StageInline(admin.StackedInline):
@@ -18,12 +20,15 @@ class ProjectAdmin(admin.ModelAdmin):
 @admin.register(models.Stage)
 class StageAdmin(admin.ModelAdmin):
     inlines = [ServerInline]
-
+from guardian.shortcuts import get_objects_for_user
 
 @admin.register(models.Server)
-class ServerAdmin(admin.ModelAdmin):
+class ServerAdmin(GuardedModelAdmin):
 
     list_display = ('name', 'address', 'ping')
+
+    def get_queryset(self, request):
+        return get_objects_for_user(request.user, 'projects.change_server')
 
     def ping(self, value):
         """
