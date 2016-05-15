@@ -36,5 +36,6 @@ class Deploy(common_models.TimestampedModel):
     user = models.ForeignKey(settings.AUTH_USER_MODEL)
     comments = models.TextField()
     output = models.TextField(null=True, blank=True)
-    task = models.ForeignKey(Task, null=True)
+    task = models.ForeignKey(Task, null=True, blank=True)
     configuration = models.TextField(null=True, blank=True)
+    log_file = models.CharField(null=True, blank=True, max_length=400)

@@ -1,0 +1,10 @@
+.console-log-output {
+    font-size: 10px;
+    background: black;
+    color: #00cc00;
+    height: 280px;
+    overflow-y: scroll;
+    border-radius: 20px;
+    border: 2px solid #ddd;
+    padding: 10px;
+}
