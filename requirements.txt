@@ -1,4 +1,4 @@
 Django==1.9.6
-django-guardian-1.4.4
+django-guardian=1.4.4
 django-suit==2.0a1
 # https://github.com/darklow/django-suit/tarball/v2
