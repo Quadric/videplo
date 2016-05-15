@@ -19,5 +19,5 @@ from deploys.admin import read_log_diff
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^get_log/(?P<log_name>)/(?P<start_byte>)$', read_log_diff),
+    url(r'^get_log/(?P<log_name>.+)/(?P<start_byte>.+)$', read_log_diff),
 ]

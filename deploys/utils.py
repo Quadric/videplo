@@ -4,6 +4,7 @@ def tail( f, lines=20 ):
     BLOCK_SIZE = 1024
     f.seek(0, 2)
     block_end_byte = f.tell()
+    all_end_byte = block_end_byte
     lines_to_go = total_lines_wanted
     block_number = -1
     blocks = [] # blocks of size BLOCK_SIZE, in reverse order starting
@@ -23,4 +24,4 @@ def tail( f, lines=20 ):
         block_end_byte -= BLOCK_SIZE
         block_number -= 1
     all_read_text = ''.join(reversed(blocks))
-    return ('\n'.join(all_read_text.splitlines()[-total_lines_wanted:]), block_end_byte)
+    return ('\n'.join(all_read_text.splitlines()[-total_lines_wanted:]), all_end_byte)
