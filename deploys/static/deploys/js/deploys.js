@@ -7,6 +7,7 @@
             }
             start_byte = data['end_byte'];
             $('.console-log-output').find('code').append(data['content']);
+            $(".console-log-output").animate({ scrollTop: $(".console-log-output")[0].scrollHeight}, 1000);
             setTimeout(function() {
                 get_log()
             }, 3000);
